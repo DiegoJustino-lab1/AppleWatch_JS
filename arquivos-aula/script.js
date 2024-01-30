@@ -56,6 +56,21 @@ function atualizarTamanho(){
     }
 }
 
+
+function atualizarCorSelecionada(){
+    const opcaoCorSelecionada = document
+    .querySelector('[name="opcao-cor"]:checked')
+    .id.charAt(0);
+    corSelecionada= opcaoCorSelecionada;
+    nomeCorSelecionada.innerText= 'Cor -  ${ opcoesCores[corSelecionada].nome}';
+    imagemVisualizacao.src= './imagens/opcoes-cores/$opcoesCores[corSelecionada].nomePastaImagens}/imagem- ${ imagemSelecionada }.jpeg';
+    opcaoImagem0.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-0.jpeg';
+    opcaoImagem1.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-1.jpeg';
+    opcaoImagem2.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-2.jpeg';
+
+    tituloProduto.innerText= 'Pulseira loop esportiva &{opcoesCores[corSelecionada].nome.toLowerCase()}para caixa de ${opcoesTamanho[tamanhoSelecionado]}';
+}       
+
 function atualizarImagemSelecionada(){
     const opcaoImagemSelecionada = document
     .querySelector('[name="opcao-imagem"]:checked')
@@ -63,42 +78,4 @@ function atualizarImagemSelecionada(){
    imagemSelecionada= opcaoImagemSelecionada;
 
    imagemVisualizacao.src ="./imagens/opcoes-cores/" + opcoesCores[corSelecionada].nomePastaImagens+ "/imagem-" + imagemSelecionada+ ".jpeg";  
-}
-
-function atualizarCorSelecionada(){
-    const numeroCorSelecionada= document
-    .querySelector('[name="opcao-cor"]:checked')
-    .id.charAt(0);
-    corSelecionada= numeroCorSelecionada;
-
-    tituloProduto.innerText=
-    "Pulseira loop esportiva " +
-     opcoesCores[corSelecionada].nome.toLocaleLowerCase() +
-      "para caixa de" +
-      opcoesTamanho[tamanhoSelecionado];
-
-    // Atualizar as imagens de visualização e miniatura
-    opcaoImagem0.src=
-    "./imagens/opcoes-cores/" +
-     opcoesCores[corSelecionada].nomePastaImagens +
-      "/imagem-0.jpeg";
-
-    opcaoImagem1.src=
-    "./imagens/opcoes-cores/" +
-     opcoesCores[corSelecionada].nomePastaImagens +
-    "/imagem-1.jpeg";
-
-    opcaoImagem2.src=
-    "./imagens/opcoes-cores/" +
-    opcoesCores[corSelecionada].nomePastaImagens +
-    "/imagem-2.jpeg";
-
-    imagemVisualizacao.src=
-      "./imagens/opcoes-cores/" +
-      opcoesCores[corSelecionada].nomePastaImagens +
-      "/imagem-" +
-      imagemSelecionada +
-      ".jpeg";
-
-    nomeCorSelecionada.innerText= "Cor -" +opcoesCores[corSelecionada].nome;
 }
