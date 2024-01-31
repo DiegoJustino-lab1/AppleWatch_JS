@@ -1,33 +1,33 @@
+const imagemVisualizacao= document.getElementById("imagem-visualizacao");
+const nomeCorSelecionada=document.getElementById("nome-cor-selecionada");
+const tituloProduto= document.getElementById("titulo-produto");
 
-const verdeCipreste= {
+
+const verdeCipreste = {
 nome: "Verde-cipreste",
-nomePastaImagens:"imagens-verde-cipreste",
-};
+pasta:"imagens-verde-cipreste"
+}
 
 const azulInverno={
 nome: "Azul Inverno",
-nomePastaImagens:"imagens-azul-inverno",
-};
+pasta:"imagens-azul-inverno"
+}
 
 const meiaNoite={
 nome: "Meia Noite",
-nomePastaImagens:"imagens-meia-noite",
-};
+pasta:"imagens-meia-noite"
+}
 
 const estelar={
 nome: "Estelar",
-nomePastaImagens:"imagens-estelar",
-};
+pasta:"imagens-estelar"
+}
 
 const rosaClaro={
 nome: "Rosa Claro",
-nomePastaImagens:"imagens-rosa-claro",
-};
+pasta:"imagens-rosa-claro"
+}
 
-
-const tituloProduto= document.getElementById("titulo-produto");
-const imagemVisualizacao= document.getElementById("imagem-visualizacao");
-const nomeCorSelecionada=document.getElementById("nome-cor-selecionada");
 const opcoesCores= [verdeCipreste, azulInverno, meiaNoite, estelar, rosaClaro];
 const opcoesTamanho= ["41mm", "45mm"];
 const opcaoImagem0=document.getElementById("0-imagem-miniatura");
@@ -37,6 +37,14 @@ let tamanhoSelecionado= 1;
 let imagemSelecionada= 1;
 let corSelecionada=1;
 
+
+function atualizarImagemSelecionada(){
+    const idOpcaoSelecionada = document
+    .querySelector('[name="opcao-imagem"]:checked').id;
+   imagemSelecionada= idOpcaoSelecionada.charAt(0);
+   imagemVisualizacao.src= './imagens/opcoes-cores/imagens-azul-inverno/imagem-'+ imagemSelecionada+'.jpeg';
+
+}
 
 function atualizarTamanho(){
     const opcaoTamanhoSelecionado = document
@@ -59,23 +67,15 @@ function atualizarTamanho(){
 
 function atualizarCorSelecionada(){
     const opcaoCorSelecionada = document
-    .querySelector('[name="opcao-cor"]:checked')
-    .id.charAt(0);
-    corSelecionada= opcaoCorSelecionada;
-    nomeCorSelecionada.innerText= 'Cor -  ${ opcoesCores[corSelecionada].nome}';
-    imagemVisualizacao.src= './imagens/opcoes-cores/$opcoesCores[corSelecionada].nomePastaImagens}/imagem- ${ imagemSelecionada }.jpeg';
-    opcaoImagem0.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-0.jpeg';
-    opcaoImagem1.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-1.jpeg';
-    opcaoImagem2.src='./imagens/opcoes-cores/${opcoesCores[corSelecionada].nomePastaImagens}/imagem-2.jpeg';
-
-    tituloProduto.innerText= 'Pulseira loop esportiva &{opcoesCores[corSelecionada].nome.toLowerCase()}para caixa de ${opcoesTamanho[tamanhoSelecionado]}';
+    .querySelector('[name="opcao-cor"]:checked').id;
+    corSelecionada= opcaoCorSelecionada.charAt(0);
+    tituloProduto.innerText= "Pulseira loop esportiva"+ opcoesCores[corSelecionada].nome+ " para caixa de "+ " "+ tamanhoSelecionado;
+       
+    opcaoImagem0.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-0.jpeg";   
+    opcaoImagem1.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-1.jpeg";
+    opcaoImagem2.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-2.jpeg";
+    imagemVisualizacao.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-"+ imagemSelecionada+".jpeg";
+    nomeCorSelecionada.innerText= opcoesCores[corSelecionada].nome;
 }       
 
-function atualizarImagemSelecionada(){
-    const opcaoImagemSelecionada = document
-    .querySelector('[name="opcao-imagem"]:checked')
-    .id.charAt(0);
-   imagemSelecionada= opcaoImagemSelecionada;
 
-   imagemVisualizacao.src ="./imagens/opcoes-cores/" + opcoesCores[corSelecionada].nomePastaImagens+ "/imagem-" + imagemSelecionada+ ".jpeg";  
-}
