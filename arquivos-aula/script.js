@@ -30,13 +30,12 @@ pasta:"imagens-rosa-claro"
 
 const opcoesCores= [verdeCipreste, azulInverno, meiaNoite, estelar, rosaClaro];
 const opcoesTamanho= ["41mm", "45mm"];
-const opcaoImagem0=document.getElementById("0-imagem-miniatura");
-const opcaoImagem1=document.getElementById("1-imagem-miniatura");
-const opcaoImagem2=document.getElementById("2-imagem-miniatura");
+const miniaturaImagem0=document.getElementById("0-imagem-miniatura");
+const miniaturaImagem1=document.getElementById("1-imagem-miniatura");
+const miniaturaImagem2=document.getElementById("2-imagem-miniatura");
 let tamanhoSelecionado= 1;
 let imagemSelecionada= 1;
 let corSelecionada=1;
-
 
 function atualizarImagemSelecionada(){
     const idOpcaoSelecionada = document
@@ -66,16 +65,17 @@ function atualizarTamanho(){
 
 
 function atualizarCorSelecionada(){
-    const opcaoCorSelecionada = document
-    .querySelector('[name="opcao-cor"]:checked').id;
+    const opcaoCorSelecionada = document.querySelector('[name="opcao-cor"]:checked').id;
     corSelecionada= opcaoCorSelecionada.charAt(0);
-    tituloProduto.innerText= "Pulseira loop esportiva"+ opcoesCores[corSelecionada].nome+ " para caixa de "+ " "+ tamanhoSelecionado;
+    tituloProduto.innerText= "Pulseira loop esportiva"+" "+ opcoesCores[corSelecionada].nome.toLocaleLowerCase()+ " para caixa de "+ " "+ opcoesTamanho[tamanhoSelecionado];
        
-    opcaoImagem0.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-0.jpeg";   
-    opcaoImagem1.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-1.jpeg";
-    opcaoImagem2.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-2.jpeg";
-    imagemVisualizacao.src= "./imagnes/opcoes-cores/"+ opcoesCores[corSelecionada].pasta+"/imagem-"+ imagemSelecionada+".jpeg";
-    nomeCorSelecionada.innerText= opcoesCores[corSelecionada].nome;
+    nomeCorSelecionada.innerText= 'Cor - '+ opcoesCores[corSelecionada].nome;
+    miniaturaImagem0.src = './imagens/opcoes-cores/'+opcoesCores[corSelecionada].pasta +'/imagem-0.jpeg';
+    miniaturaImagem1.src = './imagens/opcoes-cores/'+opcoesCores[corSelecionada].pasta +'/imagem-1.jpeg';
+    miniaturaImagem2.src = './imagens/opcoes-cores/'+opcoesCores[corSelecionada].pasta +'/imagem-2.jpeg';
+
+    imagemVisualizacao.src= './imagens/opcoes-cores/'+opcoesCores[corSelecionada].pasta +'/imagem-'+ imagemSelecionada+'.jpeg';
+
 }       
 
 
